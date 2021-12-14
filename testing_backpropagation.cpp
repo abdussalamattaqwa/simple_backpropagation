@@ -10,7 +10,6 @@ int main(){
     char huruf[7] = {'A', 'B', 'C', 'D', 'E', 'J', 'K'};
     int array_of_target = 0; 
 
-    float output[7];
     for (size_t pola = 0; pola < 21; pola++)
         {
            
@@ -29,7 +28,6 @@ int main(){
 
                 // applies its activation function to compute its output signal
                 z[j] = sigmoid(z_in);
-                // printf("\n z_in = %.2f \t z = %.2f \n",z_in, z[j]);
 
             }
             
@@ -46,12 +44,12 @@ int main(){
                 float y_in = total + bias_w[k];
 
                 // applies its activation function to compute its output signal
-                // y[k] = biopolarSigmoid(y_in);
-                output[k] = y_in;
+                y[k] = reluCostum(y_in);
             }  
 
 
             printf( "\n\nPola ke - %d huruf %c\t\n",pola+1, huruf[array_of_target]);
+            array_of_target++;
             if (pola == 6 || pola == 13 || pola == 20)
             {
                 array_of_target = 0;
@@ -59,7 +57,7 @@ int main(){
             printf("\t(\t");
             for (size_t k = 0; k < 7; k++)
             {
-                printf("%f,\t",  output[k]);
+                printf("%d,\t",  y[k]);
             }
             
             printf(")\n\n"); 
